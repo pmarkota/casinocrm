@@ -255,7 +255,7 @@ export default function LoginPage() {
                 href="/register" 
                 className="text-sm text-blue-300 hover:text-violet-300 transition duration-200 inline-flex items-center"
               >
-                <span>Don't have an account?</span>
+                <span>Dont have an account?</span>
                 <span className="ml-1 font-medium text-violet-400 hover:text-violet-300 transition-colors">Sign up</span>
               </Link>
             </motion.div>
