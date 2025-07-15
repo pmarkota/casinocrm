@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FiMail, FiLock, FiAlertCircle } from "react-icons/fi";
 
-export default function LoginPage() {
+// Separate component for search params usage
+function LoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -290,5 +291,16 @@ export default function LoginPage() {
         </motion.div>
       </motion.div>
     </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-950 to-slate-900 p-4">
+      <div className="text-white">Loading...</div>
+    </div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
